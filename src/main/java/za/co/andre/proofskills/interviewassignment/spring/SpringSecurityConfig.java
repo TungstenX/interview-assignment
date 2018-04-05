@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.web.access.AccessDeniedHandler;
 
 /**
+ * The security config, best to be in its own class
  *
  * @author Andr&eacute; Labuschagn&eacute; <andre@ParanoidAndroid.co.za>
  */
@@ -25,8 +26,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     private MyAuthenticationProvider myAuthenticationProvider;
 
     /**
-     * roles admin allow to access /admin/** roles user allow to access /user/**
-     * custom 403 access denied handler
+     * Roles admin allow to access /admin/
+     **<p>
+     * Roles user allow to access /user/
+     **<p>
+     * Custom 403 access denied handler
      *
      * @param http
      * @throws Exception
@@ -59,10 +63,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(myAuthenticationProvider);
-//        auth.inMemoryAuthentication()
-//                .withUser("user").password("password").roles("USER")
-//                .and()
-//                .withUser("admin").password("password").roles("ADMIN");
     }
 
     /**
@@ -75,5 +75,4 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(myAuthenticationProvider);
     }
-
 }

@@ -8,6 +8,7 @@ import za.co.andre.proofskills.interviewassignment.service.EmployeeService;
 import za.co.andre.proofskills.interviewassignment.service.MyProfileService;
 
 /**
+ * The spring config class, creates 'em magic
  *
  * @author Andr&eacute; Labuschagn&eacute; <andre@ParanoidAndroid.co.za>
  */

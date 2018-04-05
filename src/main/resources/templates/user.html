@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
+        <title>User - Proof of Skills - Andr&eacute; Labuschagn&eacute;</title>
     <div th:replace="fragments/header :: header-css"/>
 </head>
 <body>
@@ -11,13 +12,6 @@
 
         <div class="starter-template">
             <h1>Profile details</h1>
-
-    
-<!--    private List<NextOfKin> employee_next_of_kin;
-    private List<EmployeeReview> employee_review;-->
-        
-            
-            
             <div th:if="${profile != null}" style="width: 100%">
                 <table id="employees">
                     <tr>
@@ -163,11 +157,8 @@
             <form th:action="@{/logout}" method="post">
                 <input type="submit" value="Sign Out"/>
             </form>
-
         </div>
-
     </div>
-    <!-- /.container -->
     <div th:replace="fragments/footer :: footer"/>
 
 </body>

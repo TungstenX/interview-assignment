@@ -3,6 +3,7 @@ package za.co.andre.proofskills.interviewassignment.data;
 import java.util.List;
 
 /**
+ * Holy Mother-Goose it's a lot of fields and duplication
  *
  * @author Andr&eacute; Labuschagn&eacute; <andre@ParanoidAndroid.co.za>
  */

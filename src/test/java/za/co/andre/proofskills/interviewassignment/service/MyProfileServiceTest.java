@@ -17,6 +17,7 @@ import za.co.andre.proofskills.interviewassignment.data.Token;
 import za.co.andre.proofskills.interviewassignment.spring.AppConfig;
 
 /**
+ * Test Profile service
  *
  * @author Andr&eacute; Labuschagn&eacute; <andre@ParanoidAndroid.co.za>
  */
@@ -62,6 +63,6 @@ public class MyProfileServiceTest {
         Profile profile = myProfileService.getProfile(token);
         assertNotNull(profile);
         //spot check
-        assertEquals((long)profile.getAge(), (long)66);
+        assertEquals((long) profile.getAge(), (long) 66);
     }
 }

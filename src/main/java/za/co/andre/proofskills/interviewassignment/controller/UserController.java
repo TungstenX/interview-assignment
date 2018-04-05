@@ -1,6 +1,5 @@
 package za.co.andre.proofskills.interviewassignment.controller;
 
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
@@ -14,11 +13,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import za.co.andre.proofskills.interviewassignment.data.Profile;
 import za.co.andre.proofskills.interviewassignment.data.Token;
-import za.co.andre.proofskills.interviewassignment.helper.EmployeeComparator;
 import za.co.andre.proofskills.interviewassignment.service.MyProfileService;
 import za.co.andre.proofskills.interviewassignment.spring.MyAuthenticationToken;
 
 /**
+ * The user controller - as you would have guess...
  *
  * @author Andr&eacute; Labuschagn&eacute; <andre@ParanoidAndroid.co.za>
  */
@@ -28,7 +27,14 @@ public class UserController {
     private static final Logger LOG = Logger.getLogger(UserController.class.getName());
     @Autowired
     private MyProfileService myProfileService;
-    
+
+    /**
+     * User page entry point, will get the profile of the logged in person
+     *
+     * @param httpServletRequest
+     * @param model
+     * @return
+     */
     @GetMapping("/user")
     public String profile(HttpServletRequest httpServletRequest, Model model) {
         try {
@@ -42,12 +48,18 @@ public class UserController {
             return "login";
         }
     }
-    
+
+    /**
+     * This should go with it's twin to a base class... Another day...
+     *
+     * @return
+     * @throws AuthenticationException
+     */
     private Token getAuthToken() throws AuthenticationException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication instanceof MyAuthenticationToken) {
             return ((MyAuthenticationToken) authentication).getToken();
         }
-         throw new AuthenticationServiceException("Not authenticated, please log in again");
+        throw new AuthenticationServiceException("Not authenticated, please log in again");
     }
 }

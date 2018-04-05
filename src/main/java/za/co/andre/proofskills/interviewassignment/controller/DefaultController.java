@@ -4,12 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
+ * No rocket-surgery here...
  *
  * @author Andr&eacute; Labuschagn&eacute; <andre@ParanoidAndroid.co.za>
  */
 @Controller
 public class DefaultController {
-    
 
     @GetMapping("/")
     public String home1() {

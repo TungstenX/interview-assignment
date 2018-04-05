@@ -11,13 +11,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import za.co.andre.proofskills.interviewassignment.data.Employee;
 import za.co.andre.proofskills.interviewassignment.data.Profile;
 import za.co.andre.proofskills.interviewassignment.data.Token;
 import static za.co.andre.proofskills.interviewassignment.service.Constants.PATH_PROFILE;
 import static za.co.andre.proofskills.interviewassignment.service.Constants.URL_BASE;
 
 /**
+ * Service for profile related data
  *
  * @author Andr&eacute; Labuschagn&eacute; <andre@ParanoidAndroid.co.za>
  */
@@ -26,6 +26,12 @@ public class MyProfileService {
 
     private static final Logger LOG = Logger.getLogger(MyProfileService.class.getName());
 
+    /**
+     * Get the logged in user's profile
+     *
+     * @param token
+     * @return
+     */
     public Profile getProfile(Token token) {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();

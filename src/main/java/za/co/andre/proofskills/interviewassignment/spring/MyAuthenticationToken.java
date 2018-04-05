@@ -11,6 +11,7 @@ import org.springframework.security.core.GrantedAuthority;
 import za.co.andre.proofskills.interviewassignment.data.Token;
 
 /**
+ * Just a extention to hold the token
  *
  * @author Andr&eacute; Labuschagn&eacute; <andre@ParanoidAndroid.co.za>
  */
@@ -35,8 +36,7 @@ public class MyAuthenticationToken extends UsernamePasswordAuthenticationToken {
 
     @Override
     public Collection<GrantedAuthority> getAuthorities() {
-        return super.getAuthorities(); 
+        return super.getAuthorities();
     }
-    
-    
+
 }

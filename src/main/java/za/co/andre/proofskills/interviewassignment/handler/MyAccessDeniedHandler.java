@@ -13,27 +13,32 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;
 
 /**
+ * The good old 403 handler...
  *
  * @author Andr&eacute; Labuschagn&eacute; <andre@ParanoidAndroid.co.za>
  */
 @Component
-public class MyAccessDeniedHandler  implements AccessDeniedHandler {
+public class MyAccessDeniedHandler implements AccessDeniedHandler {
 
     private final static Logger LOG = Logger.getLogger(MyAccessDeniedHandler.class.getName());
 
+    /**
+     * Dang! sucks to be you?
+     *
+     * @param httpServletRequest
+     * @param httpServletResponse
+     * @param e
+     * @throws IOException
+     * @throws ServletException
+     */
     @Override
     public void handle(HttpServletRequest httpServletRequest,
-                       HttpServletResponse httpServletResponse,
-                       AccessDeniedException e) throws IOException, ServletException {
-
+            HttpServletResponse httpServletResponse, AccessDeniedException e)
+            throws IOException, ServletException {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
         if (auth != null) {
-            LOG.log(Level.INFO, "User '" + auth.getName() + "' attempted to access the protected URL: " + httpServletRequest.getRequestURI());
+            LOG.log(Level.WARNING, "User '{0}' attempted to access the protected URL: {1}", new Object[]{auth.getName(), httpServletRequest.getRequestURI()});
         }
-
         httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/403");
-
     }
-    
 }

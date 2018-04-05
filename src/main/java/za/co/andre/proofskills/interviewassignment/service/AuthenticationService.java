@@ -21,6 +21,7 @@ import static za.co.andre.proofskills.interviewassignment.service.Constants.PATH
 import static za.co.andre.proofskills.interviewassignment.service.Constants.URL_BASE;
 
 /**
+ * As the class name states...
  *
  * @author Andr&eacute; Labuschagn&eacute; <andre@ParanoidAndroid.co.za>
  */
@@ -29,7 +30,14 @@ public class AuthenticationService {
 
     private static final Logger LOG = Logger.getLogger(AuthenticationService.class.getName());
 
-    public Token getToken(Login loginUser) throws AuthenticationException{
+    /**
+     * Go and get a token from the server
+     *
+     * @param loginUser
+     * @return
+     * @throws AuthenticationException
+     */
+    public Token getToken(Login loginUser) throws AuthenticationException {
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<Login> request = new HttpEntity<>(loginUser);
         String url = URL_BASE + PATH_AUTH; //this way the compiler optimise the concatination of strings
@@ -39,12 +47,18 @@ public class AuthenticationService {
             return response.getBody();
         } else {
             StringBuilder sb = new StringBuilder("Error while calling ");
-            sb.append(url).append(" : ").append(response.getStatusCode());            
+            sb.append(url).append(" : ").append(response.getStatusCode());
             LOG.log(Level.SEVERE, sb.toString());
             throw new BadCredentialsException(sb.toString());
         }
     }
 
+    /**
+     * Get logged in user
+     *
+     * @param token
+     * @return
+     */
     public User getMe(Token token) {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();

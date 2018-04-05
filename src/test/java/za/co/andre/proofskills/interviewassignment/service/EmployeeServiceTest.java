@@ -17,6 +17,10 @@ import za.co.andre.proofskills.interviewassignment.data.Token;
 import za.co.andre.proofskills.interviewassignment.spring.AppConfig;
 
 /**
+ * Test employee services - very shallow
+ * <p>
+ * TODO: Could not figure out what the values for start_date_range or
+ * birth_date_range
  *
  * @author Andr&eacute; Labuschagn&eacute; <andre@ParanoidAndroid.co.za>
  */
@@ -72,9 +76,6 @@ public class EmployeeServiceTest {
         Employee[] employees = employeeService.getAll(token);
         assertNotNull(employees);
         assertEquals(employees.length, 10);
-        //Integer position,
-//            Integer start_date_range, Integer user, String gender,
-//            Integer birth_date_range, String email__contains
         //race
         employees = employeeService.filter(token, employees[0].getRace(), null, null, null, null, null, null);
         assertNotNull(employees);

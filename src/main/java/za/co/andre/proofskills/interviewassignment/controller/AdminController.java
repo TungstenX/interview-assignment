@@ -26,6 +26,7 @@ import za.co.andre.proofskills.interviewassignment.service.EmployeeService;
 import za.co.andre.proofskills.interviewassignment.spring.MyAuthenticationToken;
 
 /**
+ * The controller for the admin section
  *
  * @author Andr&eacute; Labuschagn&eacute; <andre@ParanoidAndroid.co.za>
  */
@@ -36,6 +37,13 @@ public class AdminController {
     @Autowired
     private EmployeeService employeeService;
 
+    /**
+     * The default landing for admin, will build a list of all the employees
+     *
+     * @param httpServletRequest
+     * @param model
+     * @return
+     */
     @GetMapping("/admin")
     public String admin(HttpServletRequest httpServletRequest, Model model) {
         try {
@@ -50,7 +58,21 @@ public class AdminController {
             return "login";
         }
     }
-    
+
+    /**
+     * Filter on what is supplied
+     *
+     * @param httpServletRequest
+     * @param model
+     * @param race
+     * @param position
+     * @param startDateRange
+     * @param userId
+     * @param gender
+     * @param birthDateRange
+     * @param emailConstraint
+     * @return
+     */
     @PostMapping("/filter")
     public String filter(HttpServletRequest httpServletRequest, Model model,
             @RequestParam(value = "race", required = false) String race,
@@ -61,7 +83,7 @@ public class AdminController {
             @RequestParam(value = "birth_date_range", required = false) Integer birthDateRange,
             @RequestParam(value = "email__constraint", required = false) String emailConstraint) {
         try {
-            if(emailConstraint != null && emailConstraint.isEmpty()) {
+            if (emailConstraint != null && emailConstraint.isEmpty()) {
                 emailConstraint = null;
             }
             Token token = getAuthToken();
@@ -75,14 +97,22 @@ public class AdminController {
             return "login";
         }
     }
-    
+
+    /**
+     * Get an employee using user id
+     *
+     * @param httpServletRequest
+     * @param model
+     * @param userId
+     * @return
+     */
     @PostMapping("/employee")
-    public String filter(HttpServletRequest httpServletRequest, Model model,
+    public String employee(HttpServletRequest httpServletRequest, Model model,
             @RequestParam(value = "user") Integer userId) {
         try {
             Token token = getAuthToken();
             Employee[] employees = employeeService.filter(token, null, null, null, userId, null, null, null);
-            if(employees != null && employees.length >= 1) {// oh boy this can be trouble if user id is not unique, but what is the probability? ¯\_(ツ)_/¯
+            if (employees != null && employees.length >= 1) {// oh boy this can be trouble if user id is not unique, but what is the probability? ¯\_(ツ)_/¯
                 model.addAttribute("employee", employees[0]);
             }
             return "employee";
@@ -93,11 +123,17 @@ public class AdminController {
         }
     }
 
+    /**
+     * This should go to a base class
+     *
+     * @return
+     * @throws AuthenticationException
+     */
     private Token getAuthToken() throws AuthenticationException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication instanceof MyAuthenticationToken) {
             return ((MyAuthenticationToken) authentication).getToken();
         }
-         throw new AuthenticationServiceException("Not authenticated, please log in again");
+        throw new AuthenticationServiceException("Not authenticated, please log in again");
     }
 }

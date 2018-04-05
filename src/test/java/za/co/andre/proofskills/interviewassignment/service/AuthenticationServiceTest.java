@@ -17,6 +17,7 @@ import za.co.andre.proofskills.interviewassignment.data.User;
 import za.co.andre.proofskills.interviewassignment.spring.AppConfig;
 
 /**
+ * Tests Auth services - very shallow
  *
  * @author Andr&eacute; Labuschagn&eacute; <andre@ParanoidAndroid.co.za>
  */
@@ -58,8 +59,8 @@ public class AuthenticationServiceTest {
         Token token = authenticationService.getToken(loginUser);
         assertNotNull(token);
     }
-    
-        @Test
+
+    @Test
     public void testGetMe() {
         assertNotNull(authenticationService);
         Token token = authenticationService.getToken(loginUser);

@@ -18,6 +18,7 @@ import static za.co.andre.proofskills.interviewassignment.service.Constants.PATH
 import static za.co.andre.proofskills.interviewassignment.service.Constants.URL_BASE;
 
 /**
+ * Service for employee related data
  *
  * @author Andr&eacute; Labuschagn&eacute; <andre@ParanoidAndroid.co.za>
  */
@@ -26,6 +27,12 @@ public class EmployeeService {
 
     private static final Logger LOG = Logger.getLogger(EmployeeService.class.getName());
 
+    /**
+     * Get all the employees
+     *
+     * @param token
+     * @return
+     */
     public Employee[] getAll(Token token) {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
@@ -46,6 +53,19 @@ public class EmployeeService {
         return null;
     }
 
+    /**
+     * Filter employees on the supplied information
+     *
+     * @param token
+     * @param race
+     * @param position
+     * @param start_date_range
+     * @param user
+     * @param gender
+     * @param birth_date_range
+     * @param email__contains
+     * @return
+     */
     public Employee[] filter(Token token, String race, Integer position,
             Integer start_date_range, Integer user, String gender,
             Integer birth_date_range, String email__contains) {
