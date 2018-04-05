@@ -21,14 +21,15 @@ I use Netbeans 8.2 on Ubuntu 18.04.
 
 ## Time allocation
 The following is my time allocated to this project:
-- 10.5 hours: Coding the solution
+- 11.5 hours: Coding the solution
 - 30 minutes: Packaging and prettying up everything
 
 # Usage
 `java -jar interview-assignment-0.0.1-SNAPSHOT.jar`
-User name: pravin.gordhan
-Password: pravin.gordhan
-NSA level security - not!
+
+- User name: pravin.gordhan
+- Password: pravin.gordhan
+- NSA level security - not!
 
 
 ## Thanks
