@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Admin - Proof of Skills - Andr&eacute; Labuschagn&eacute;</title>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+    <div th:replace="fragments/header :: header"/>
+
+    <div class="container">
+
+        <div class="starter-template">
+            <h1>Admin page</h1>
+            <h2>List of all users</h2>
+            <div th:if="${not #lists.isEmpty(employees)}" style="width: 100%">
+                <form th:action="@{/filter}" method="post">
+                    <table id="filter">
+                        <tr>
+                            <td>
+                                <select name="race" id="race">
+                                    <option disabled selected value> -- Filter on Race -- </option>
+                                    <option value="B">Black African</option>
+                                    <option value="C">Coloured African</option>
+                                    <option value="I">Indian or Asian African</option>
+                                    <option value="W">White African</option>
+                                    <option value="N">Transparent</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" name="position" id="position" placeholder="position" />
+                            </td>
+                            <td>
+                                <input type="number" name="start_date_range" id="start_date_range" placeholder="start date range" />
+                            </td>
+                            <td>
+                                <input type="number" name="user" id="user" placeholder="user id" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select name="gender" id="gender">
+                                    <option disabled selected value> -- Filter on Gender -- </option>
+                                    <option value="F">Female</option>
+                                    <option value="M">Male</option>
+                                    <option value="H">Human</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" name="birth_date_range" id="birth_date_range" placeholder="birth date range" />
+                            </td>                            
+                            <td>
+                                <input type="text" name="email__constraint" id="email__constraint" placeholder="email constraint" />
+                            </td>
+                            <td><input type="submit" value="Filter" /></td>
+                        </tr>
+                    </table>                                    
+                </form>
+                <br />
+                <form th:action="@{/employee}" method="post">
+                    <table id="employees">
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>User Name</th>
+                            <th>View Details</th>
+                        </tr>
+                        <tr th:each="employee,iterStat : ${employees}">
+                            <td><span th:text="${employee.user.id}" /></td>
+                            <td><span th:text="${employee.user.first_name}" /></td>
+                            <td><span th:text="${employee.user.last_name}" /></td>
+                            <td><span th:text="${employee.user.username}" /></td>
+                            <td><button name="user" type="submit" th:value="${employee.user.id}">...</button></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div th:if="${#lists.isEmpty(employees)}" style="width: 100%">
+                <span style="margin: auto">Dang! No employees... What have you done? <strong>&eth;.&Ocirc;</strong></span>
+            </div>
+            <br />
+            <br />
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out"/>
+            </form>
+
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+    <div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>

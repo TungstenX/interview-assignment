@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Proof of Skills - Andr&eacute; Labuschagn&eacute;</title>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+<div class="container">
+    <div class="starter-template">
+        <h1>Proof of Skills - Andr&eacute; Labuschagn&eacute;</h1>
+        <h2>1. Visit <a th:href="@{/admin}">Admin page (Need admin role, hint: Pravin does)</a></h2>
+        <h2>2. Visit <a th:href="@{/user}">User page (Need user role, hint: Same ^)</a></h2>
+        <h2>3. Visit <a th:href="@{/about}">About</a></h2>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>

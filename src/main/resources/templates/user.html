@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+    <div th:replace="fragments/header :: header"/>
+
+    <div class="container">
+
+        <div class="starter-template">
+            <h1>Profile details</h1>
+
+    
+<!--    private List<NextOfKin> employee_next_of_kin;
+    private List<EmployeeReview> employee_review;-->
+        
+            
+            
+            <div th:if="${profile != null}" style="width: 100%">
+                <table id="employees">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    <tr>
+                        <td>ID:</td><td><span th:text="${profile.id}" /></td>
+                    </tr>
+                    <tr>
+                        <td>[User] ID:</td><td><span th:text="${profile.user.id}" /></td>
+                    </tr>
+                    <tr>
+                        <td>[User] User name:</td><td><span th:text="${profile.user.username}" /></td>
+                    </tr>
+                    <tr>
+                        <td>[User] First name:</td><td><span th:text="${profile.user.first_name}" /></td>
+                    </tr>
+                    <tr>
+                        <td>[User] Last name:</td><td><span th:text="${profile.user.last_name}" /></td>
+                    </tr>
+                    <tr>
+                        <td>[User] Is active:</td><td><span th:text="${profile.user.is_active}" /></td>
+                    </tr>
+                    <tr>
+                        <td>[User] Is staff:</td><td><span th:text="${profile.user.is_staff}" /></td>
+                    </tr>
+                    <tr>
+                        <td>[User] Is superuser:</td><td><span th:text="${profile.user.is_superuser}" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>[Position] ID:</td><td><span th:text="${profile.position.id}" /></td>
+                    </tr>
+                    <tr>
+                        <td>[Position] Name:</td><td><span th:text="${profile.position.name}" /></td>
+                    </tr>
+                    <tr>
+                        <td>[Position] Level:</td><td><span th:text="${profile.position.level}" /></td>
+                    </tr>
+                    <tr>
+                        <td>[Position] Sort:</td><td><span th:text="${profile.position.sort}" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>Phone number:</td><td><span th:text="${profile.phone_number}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td><td><span th:text="${profile.email}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Personal email:</td><td><span th:text="${profile.personal_email}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Github user:</td><td><span th:text="${profile.github_user}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Birth date:</td><td><span th:text="${profile.birth_date}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Gender:</td><td><span th:text="${profile.gender}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Race:</td><td><span th:text="${profile.race}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Years worked:</td><td><span th:text="${profile.years_worked}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Age:</td><td><span th:text="${profile.age}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Days to birthday:</td><td><span th:text="${profile.days_to_birthday}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Start date:</td><td><span th:text="${profile.start_date}" /></td>
+                    </tr>
+                    <tr>
+                        <td>End date:</td><td><span th:text="${profile.end_date}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Id document:</td><td><span th:text="${profile.id_document}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Id number:</td><td><span th:text="${profile.id_number}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Is employed:</td><td><span th:text="${profile.is_employed}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Is foreigner:</td><td><span th:text="${profile.is_foreigner}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Leave remaining:</td><td><span th:text="${profile.leave_remaining}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Next review:</td><td><span th:text="${profile.next_review}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Physical address:</td><td><span th:text="${profile.physical_address}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Tax number:</td><td><span th:text="${profile.tax_number}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Visa document:</td><td><span th:text="${profile.visa_document}" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Next of kin:</td>
+                    </tr>
+                    <tr th:each="kin,iterStat : ${profile.employee_next_of_kin}">
+                        <td colspan="2">
+                            <table>
+                                <tr>
+                                    <td>ID:</td><td><span th:text="${kin.id}" /></td>
+                                    <td>Name:</td><td><span th:text="${kin.name}" /></td>
+                                    <td>Relationship:</td><td><span th:text="${kin.relationship}" /></td>
+                                    <td>Email:</td><td><span th:text="${kin.email}" /></td>
+                                    <td>Physical address</td><td><span th:text="${kin.physical_address}" /></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>                    
+                    <tr th:each="review,iterStat : ${profile.employee_review}">
+                        <td colspan="2">
+                            <table>
+                                <tr>
+                                    <td>ID:</td><td><span th:text="${review.id}" /></td>
+                                    <td>Date:</td><td><span th:text="${review.date}" /></td>
+                                    <td>Salary:</td><td><span th:text="${review.salary}" /></td>
+                                    <td>Type:</td><td><span th:text="${review.type}" /></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div th:if="${profile == null}" style="text-align: center">
+                Dang! No profile... What have you done? <strong>&eth;.&Ocirc;</strong>
+            </div>
+            <br />
+            <br />
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out"/>
+            </form>
+
+        </div>
+
+    </div>
+    <!-- /.container -->
+    <div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>

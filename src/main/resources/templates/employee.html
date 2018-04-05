@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Admin - Proof of Skills - Andr&eacute; Labuschagn&eacute;</title>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+    <div th:replace="fragments/header :: header"/>
+
+    <div class="container">
+
+        <div class="starter-template">
+            <h1>Admin page</h1>
+            <h2>Employee details</h2>
+            <div th:if="${employee != null}" style="width: 100%">
+                <table id="employees">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    <tr>
+                        <td>[User] ID:</td><td><span th:text="${employee.user.id}" /></td>
+                    </tr>
+                    <tr>
+                        <td>[User] User name:</td><td><span th:text="${employee.user.username}" /></td>
+                    </tr>
+                    <tr>
+                        <td>[User] First name:</td><td><span th:text="${employee.user.first_name}" /></td>
+                    </tr>
+                    <tr>
+                        <td>[User] Last name:</td><td><span th:text="${employee.user.last_name}" /></td>
+                    </tr>
+                    <tr>
+                        <td>[User] Is active:</td><td><span th:text="${employee.user.is_active}" /></td>
+                    </tr>
+                    <tr>
+                        <td>[User] Is staff:</td><td><span th:text="${employee.user.is_staff}" /></td>
+                    </tr>
+                    <tr>
+                        <td>[User] Is superuser:</td><td><span th:text="${employee.user.is_superuser}" /></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>[Position] ID:</td><td><span th:text="${employee.position.id}" /></td>
+                    </tr>
+                    <tr>
+                        <td>[Position] Name:</td><td><span th:text="${employee.position.name}" /></td>
+                    </tr>
+                    <tr>
+                        <td>[Position] Level:</td><td><span th:text="${employee.position.level}" /></td>
+                    </tr>
+                    <tr>
+                        <td>[Position] Sort:</td><td><span th:text="${employee.position.sort}" /></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Phone number:</td><td><span th:text="${employee.phone_number}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td><td><span th:text="${employee.email}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Github user:</td><td><span th:text="${employee.github_user}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Birth date:</td><td><span th:text="${employee.birth_date}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Gender:</td><td><span th:text="${employee.gender}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Race:</td><td><span th:text="${employee.race}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Years worked:</td><td><span th:text="${employee.years_worked}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Age:</td><td><span th:text="${employee.age}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Days to birthday:</td><td><span th:text="${employee.days_to_birthday}" /></td>
+                    </tr>
+                </table>
+            </div>
+            <div th:if="${employee == null}" style="text-align: center">
+                Dang! No employee... What have you done? <strong>&eth;.&Ocirc;</strong>
+            </div>
+            <br />
+            <br />
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out"/>
+            </form>
+
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+    <div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>
