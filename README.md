@@ -2,7 +2,7 @@
 
 Find me on [stackoverflow](http://stackoverflow.com/users/537566/tungstenx)
 
-# Coin Client
+# Interview Assignment 
 Proof of skills
 
 # Introduction
