@@ -22,10 +22,18 @@ I use Netbeans 8.2 on Ubuntu 18.04.
 ## Time allocation
 The following is my time allocated to this project:
 - 11.5 hours: Coding the solution
+- 3.5 hours: Containerize solution
 - 30 minutes: Packaging and prettying up everything
 
 # Usage
+## Stand-alone
 `java -jar interview-assignment-0.0.1-SNAPSHOT.jar`
+## Containerized
+Look at `README.md` in **docker/**
+Look at `README.md` in **kube/**
+## Access application 
+(Stand-alone or containerized)
+http://localhost:8090/
 
 - User name: pravin.gordhan
 - Password: pravin.gordhan
