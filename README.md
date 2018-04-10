@@ -26,12 +26,19 @@ The following is my time allocated to this project:
 - 30 minutes: Packaging and prettying up everything
 
 # Usage
+
 ## Stand-alone
+
 `java -jar interview-assignment-0.0.1-SNAPSHOT.jar`
+
 ## Containerized
+
 Look at `README.md` in **docker/**
+
 Look at `README.md` in **kube/**
+
 ## Access application 
+
 (Stand-alone or containerized)
 http://localhost:8090/
 
